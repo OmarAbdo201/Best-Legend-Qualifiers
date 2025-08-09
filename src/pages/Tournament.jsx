@@ -42,15 +42,15 @@ function Tournament() {
     }
 
     return (
-        <div className="p-4 flex flex-row items-start justify-center gap-12 overflow-auto w-full">
+        <div className="bracket p-4 flex flex-row items-start justify-center gap-12 overflow-auto w-full">
             {rounds.map((round, roundIndex) => (
-                <div key={roundIndex} className="mb-8 flex flex-col items-center">
+                <div key={roundIndex} className="round mb-8 flex flex-col items-center" data-round={roundIndex}>
                     <h2 className="text-lg font-bold mb-2">Round {roundIndex + 1}</h2>
                     {round.map((match, matchIndex) => {
                         const winner = winnersList[roundIndex][matchIndex];
 
                         return (
-                            <div key={matchIndex} className="flex gap-6 items-center justify-center mb-3">
+                            <div key={matchIndex} className="match flex gap-6 items-center justify-center mb-3">
                                 {/* Player 1 */}
                                 <img
                                     width={70}

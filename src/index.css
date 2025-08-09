@@ -25,50 +25,10 @@ body {
     z-index: -1;
 }
 
+
+
 /* Tournament page responsive fixes (CSS-only) */
 /* Scoped to the specific container class combination to avoid global side effects */
-@media (max-width: 640px) {
-
-    /* Main tournament container: keep tree rows horizontally on small screens */
-    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full {
-        flex-direction: row !important;
-        /* keep tree shape */
-        gap: 3rem !important;
-        /* keep gap-12 spacing for clarity */
-        overflow-x: auto;
-        overflow-y: visible;
-    }
-
-    /* Each match row: keep players in a row and preserve spacing */
-    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full .flex.gap-6.items-center.justify-center.mb-3 {
-        flex-direction: row !important;
-        gap: 1.5rem !important;
-        /* gap-6 */
-    }
-
-    /* VS text: slightly smaller on mobile (only inside match rows) */
-    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full .flex.gap-6.items-center.justify-center.mb-3 .font-bold {
-        font-size: 0.875rem;
-        /* 14px */
-        line-height: 1.25rem;
-    }
-
-    /* Winner highlight: thinner border on mobile and no size growth */
-    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full img.border-4.border-blue-500.rounded-lg {
-        box-sizing: border-box;
-        border-width: 2px !important;
-        /* reduce from 4px to avoid overlap */
-    }
-
-    /* Player images: shrink to avoid overlap and crop nicely */
-    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full img[width="70"][height="70"] {
-        width: 88px !important;
-        height: 88px !important;
-        object-fit: cover;
-        border-radius: 0.5rem;
-        /* rounded corners */
-    }
-}
 
 @media (min-width: 641px) and (max-width: 768px) {
 
@@ -85,4 +45,62 @@ body {
         object-fit: cover;
         border-radius: 0.5rem;
     }
+}
+
+/* ========== Pyramid bracket layout (no connectors) ========== */
+/* Stack rounds vertically with the final at the top (apex) and the first round at the bottom (base). */
+.bracket {
+  display: flex !important;                /* override Tailwind flex */
+  flex-direction: column !important;       /* stack rounds vertically */
+  align-items: stretch;
+  gap: var(--v-gap, 2.5rem) !important;    /* vertical spacing between rounds */
+}
+
+/* Each round is a two-row grid: header on row 1 (full width), matches on row 2 in a single centered line */
+.round {
+  display: grid !important;                /* override Tailwind flex on .round */
+  grid-auto-flow: column;                  /* place matches horizontally */
+  grid-auto-columns: max-content;          /* size by content (the .match) */
+  grid-template-rows: auto auto;           /* 1: title, 2: matches */
+  justify-content: center;                 /* center the matches row */
+  align-items: center;
+  column-gap: var(--h-gap, 2rem);          /* horizontal spacing between matches */
+  row-gap: 0.5rem;                         /* spacing between title and matches */
+  margin-bottom: 0 !important;             /* neutralize mb-8 */
+}
+
+/* Title spans full width on the first row */
+.round > h2 {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  margin: 0;                               /* avoid extra vertical shifts */
+}
+
+/* Force all match items into the second row and remove previous margins */
+.round .match {
+  grid-row: 2;
+  margin: 0 !important;                    /* neutralize mb-3 */
+  height: auto;                            /* use image height */
+}
+
+/* Order rounds so that round 0 (many matches) sits at the bottom like a pyramid base */
+.round[data-round="0"] { order: 100; }
+.round[data-round="1"] { order: 90; }
+.round[data-round="2"] { order: 80; }
+.round[data-round="3"] { order: 70; }
+.round[data-round="4"] { order: 60; }
+.round[data-round="5"] { order: 50; }
+
+/* Optional: tweak horizontal gap per level if you want stricter pyramid sides */
+/* Smaller gap for base rows, slightly larger near the apex */
+.round[data-round="0"] { --h-gap: 1.25rem; }
+.round[data-round="1"] { --h-gap: 1.5rem; }
+.round[data-round="2"] { --h-gap: 1.75rem; }
+.round[data-round="3"] { --h-gap: 2rem; }
+.round[data-round="4"] { --h-gap: 2.25rem; }
+.round[data-round="5"] { --h-gap: 2.5rem; }
+
+/* Keep responsive image height overrides consistent with row auto-height */
+@media (min-width: 641px) and (max-width: 768px) {
+  .bracket { --v-gap: 2.25rem; }
 }
