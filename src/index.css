@@ -24,3 +24,65 @@ body {
     backdrop-filter: blur(5px);
     z-index: -1;
 }
+
+/* Tournament page responsive fixes (CSS-only) */
+/* Scoped to the specific container class combination to avoid global side effects */
+@media (max-width: 640px) {
+
+    /* Main tournament container: keep tree rows horizontally on small screens */
+    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full {
+        flex-direction: row !important;
+        /* keep tree shape */
+        gap: 3rem !important;
+        /* keep gap-12 spacing for clarity */
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    /* Each match row: keep players in a row and preserve spacing */
+    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full .flex.gap-6.items-center.justify-center.mb-3 {
+        flex-direction: row !important;
+        gap: 1.5rem !important;
+        /* gap-6 */
+    }
+
+    /* VS text: slightly smaller on mobile (only inside match rows) */
+    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full .flex.gap-6.items-center.justify-center.mb-3 .font-bold {
+        font-size: 0.875rem;
+        /* 14px */
+        line-height: 1.25rem;
+    }
+
+    /* Winner highlight: thinner border on mobile and no size growth */
+    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full img.border-4.border-blue-500.rounded-lg {
+        box-sizing: border-box;
+        border-width: 2px !important;
+        /* reduce from 4px to avoid overlap */
+    }
+
+    /* Player images: shrink to avoid overlap and crop nicely */
+    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full img[width="70"][height="70"] {
+        width: 88px !important;
+        height: 88px !important;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        /* rounded corners */
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+
+    /* Winner highlight thinner border on small tablets */
+    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full img.border-4.border-blue-500.rounded-lg {
+        box-sizing: border-box;
+        border-width: 3px !important;
+    }
+
+    /* Tablet-ish sizes: slightly larger images than phones */
+    .p-4.flex.flex-row.items-start.justify-center.gap-12.overflow-auto.w-full img[width="70"][height="70"] {
+        width: 84px !important;
+        height: 84px !important;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+}
