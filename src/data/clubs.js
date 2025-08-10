@@ -23,7 +23,7 @@ import SakaImg from '../assets/legends/Saka.png';
 import agueroImg from '../assets/legends/Aguero.png';
 import keanImg from '../assets/legends/kean.png';
 import PalmerImg from '../assets/legends/Palmer.png';
-import isakImg from '../assets/legends/Isak.png';
+import isakImg from '../assets/legends/isak.png';
 import GriezmannImg from '../assets/legends/Griezmann.png';
 
 export const clubs = [
