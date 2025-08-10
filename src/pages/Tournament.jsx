@@ -41,10 +41,10 @@ function Tournament() {
     }
 
     return (
-        <div className="bracket p-4 flex flex-row items-start justify-center gap-12 overflow-auto w-full">
+        <div className="bracket min-w-[400px] p-4 flex flex-row items-start justify-center gap-20 overflow-auto w-full ">
             {rounds.map((round, roundIndex) => (
                 <div key={roundIndex} className="round mb-8 flex flex-col items-center" data-round={roundIndex}>
-                    <h2 className="text-lg font-bold mb-2">Round {roundIndex + 1}</h2>
+                    <h2 className="text-lg text-amber-100 font-bold mb-2">Round {roundIndex + 1}</h2>
                     {round.map((match, matchIndex) => {
                         const winner = winnersList[roundIndex][matchIndex];
 
@@ -111,17 +111,22 @@ function Tournament() {
             {/* Winner */}
             {winnersList[winnersList.length - 1].length === 1 &&
                 winnersList[winnersList.length - 1][0] && (
-                    <div className="mt-8 text-center">
-                        <h3 className="text-xl font-bold mb-2">🏆 Super Legend</h3>
-                        <img
-                            src={winnersList[winnersList.length - 1][0].legend.image}
-                            alt="winner"
-                            className="w-28 h-28 object-contain mx-auto mt-2"
-                        />
-                        <p className="mt-2 font-bold">
-                            {winnersList[winnersList.length - 1][0].legend.name}
-                        </p>
+                    <div className="mt-8 flex justify-center">
+                        <div className="winner-card p-4 text-center">
+                            <h3 className="text-xl text-yellow-500 font-bold mb-2">🏆 Super Legend</h3>
+                            <img
+                                src={winnersList[winnersList.length - 1][0].legend.image}
+                                alt="winner"
+                                className="w-28 h-28 object-contain mx-auto mt-2"
+                            />
+                            <p className="mt-2 font-bold rounded-4xl bg-blue-200 text-yellow-500">
+                                {winnersList[winnersList.length - 1][0].legend.name}
+                            </p>
+                        </div>
                     </div>
+
+
+
                 )}
         </div>
     );

@@ -4,7 +4,7 @@ function ClubCard({ selected, club, onClick }) {
         <>
             <div
                 onClick={onClick}
-                className={`cursor-pointer p-2 rounded-xl shadow-md transition-all duration-200 text-center flex flex-col justify-center items-center
+                className={`h-60 cursor-pointer p-2 rounded-xl shadow-md transition-all duration-200 text-center flex flex-col justify-center items-center
                 ${selected ? "bg-blue-200 border-2 border-blue-600 scale-75" : "bg-white hover:shadow-lg"}`}
             >
                 <img

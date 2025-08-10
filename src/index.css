@@ -25,6 +25,23 @@ body {
   z-index: -1;
 }
 
+.winner-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  /* لون خفيف */
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* ظل خفيف */
+  backdrop-filter: blur(6px);
+  /* البلور */
+}
+
+.winner-card:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease-in-out;
+}
+
+
 /* Tournament page responsive fixes (CSS-only) */
 /* Scoped to the specific container class combination to avoid global side effects */
 
@@ -76,6 +93,12 @@ body {
   /* spacing between title and matches */
   margin-bottom: 0 !important;
   /* neutralize mb-8 */
+  width: fit-content;
+  /* هنا أهم تعديل عشان العرض يبقى قد المحتوى */
+  margin-left: auto;
+  /* عشان نوسّطه أفقياً */
+  margin-right: auto;
+  /* عشان نوسّطه أفقياً */
 }
 
 /* Title spans full width on the first row */
@@ -86,13 +109,30 @@ body {
   /* avoid extra vertical shifts */
 }
 
-/* Force all match items into the second row and remove previous margins */
 .round .match {
   grid-row: 2;
   margin: 0 !important;
-  /* neutralize mb-3 */
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  /* لون خفيف */
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   height: auto;
-  /* use image height */
+}
+
+/* فرق واضح بين كل ماتش والتاني */
+.round .match:not(:last-child) {
+  margin-right: 1.5rem;
+  /* مسافة بين الماتشات */
+}
+
+/* ممكن كمان تعمل تظليل مختلف لكل ماتش فردي وزوجي */
+.round .match:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.round .match:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 /* Order rounds so that round 0 (many matches) sits at the bottom like a pyramid base */
