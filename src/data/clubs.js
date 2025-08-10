@@ -8,17 +8,24 @@ import bayernLogo from '../assets/clubs/bayern.svg';
 import arsenalLogo from '../assets/clubs/arsenal.svg';
 import manCityLogo from '../assets/clubs/manchester-city.svg';
 import tottenhamLogo from '../assets/clubs/tottenham.svg';
+import newcastleLogo from '../assets/clubs/newcastle.svg';
+import chelseaLogo from '../assets/clubs/chelsea.svg';
+import atlticomadridLogo from '../assets/clubs/atltico-madrid.svg';
 
 import messiImg from '../assets/legends/messi.png';
-import zanettiImg from '../assets/legends/Zanetti.png';
-import maldiniImg from '../assets/legends/maldini.png';
+import LautaroImg from '../assets/legends/Lautaro.png';
+import NeymarImg from '../assets/legends/Neymar.png';
 import pogbaImg from '../assets/legends/pogba.png';
-import milnerImg from '../assets/legends/Milner.png';
+import VirgilImg from '../assets/legends/Virgil.png';
 import ibraImg from '../assets/legends/ibra.png';
 import lewaImg from '../assets/legends/lewa.png';
-import ozilImg from '../assets/legends/ozil.png';
+import SakaImg from '../assets/legends/Saka.png';
 import agueroImg from '../assets/legends/Aguero.png';
 import keanImg from '../assets/legends/kean.png';
+import PalmerImg from '../assets/legends/Palmer.png';
+import isakImg from '../assets/legends/isak.png';
+import GriezmannImg from '../assets/legends/Griezmann.png';
+
 export const clubs = [
     {
         id : "1",
@@ -30,13 +37,13 @@ export const clubs = [
         id : "2",
         name: "Inter Milan",
         logo : interMilanLogo,
-        legend: { id: 2, name: "Zanetti", image: zanettiImg }
+        legend: { id: 2, name: "Lautaro", image: LautaroImg }
     },
     {
         id: 3,
         name: "AC Milan",
         logo: acMilanLogo,
-        legend: { id: 3, name: "Maldini", image: maldiniImg }
+        legend: { id: 3, name: "Ibrahimovic", image: ibraImg }
     },
     {
         id: 4,
@@ -48,13 +55,13 @@ export const clubs = [
         id: 5,
         name: "Liverpool",
         logo: liverpoolLogo,
-        legend: { id: 5, name: "Milner", image: milnerImg }
+        legend: { id: 5, name: "van Dijk", image: VirgilImg }
     },
     {
         id: 6,
         name: "PSG",
         logo: psgLogo,
-        legend: { id: 6, name: "ibra", image: ibraImg }
+        legend: { id: 6, name: "Neymar", image: NeymarImg }
     },
     {
         id: 7,
@@ -66,7 +73,7 @@ export const clubs = [
         id: 8,
         name: "Arsenal",
         logo: arsenalLogo,
-        legend: { id: 8, name: "ozil", image: ozilImg }
+        legend: { id: 8, name: "Saka", image: SakaImg }
     },
     {
         id: 9,
@@ -79,5 +86,23 @@ export const clubs = [
         name: "Tottenham",
         logo: tottenhamLogo,
         legend: { id: 10, name: "kean", image: keanImg }
+    },
+    {
+        id: 11,
+        name: "Atltico Madrid",
+        logo: atlticomadridLogo,
+        legend: { id: 11, name: "Griezmann", image: GriezmannImg }
+    },
+    {
+        id: 12,
+        name: "Chelsea",
+        logo: chelseaLogo,
+        legend: { id: 12, name: "Palmer", image: PalmerImg }
+    },
+    {
+        id: 13,
+        name: "Newcastle",
+        logo: newcastleLogo,
+        legend: { id: 13, name: "isak", image: isakImg }
     },
 ]

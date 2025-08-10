@@ -4,7 +4,6 @@ import { TournamentContext } from "../context/TournamentContext";
 function Tournament() {
     const { userClubs } = useContext(TournamentContext);
 
-
     function shuffleArray(array) {
         const arr = [...array];
         for (let i = arr.length - 1; i > 0; i--) {
