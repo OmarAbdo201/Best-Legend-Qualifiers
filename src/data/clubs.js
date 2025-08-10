@@ -25,84 +25,136 @@ import keanImg from '../assets/legends/kean.png';
 import PalmerImg from '../assets/legends/Palmer.png';
 import isakImg from '../assets/legends/Alexander.png';
 import GriezmannImg from '../assets/legends/Griezmann.png';
+import YamalImg from '../assets/legends/Yamal.png';
+import LukakuImg from '../assets/legends/Lukaku.png';
+import LeaoImg from '../assets/legends/Leao.png';
+import SanchoImg from '../assets/legends/Sancho.png';
+import MattImg from '../assets/legends/Matt.png';
+import GomezImg from '../assets/legends/Gomez.png';
+import HakimiImg from '../assets/legends/Hakimi.png';
+import SaneImg from '../assets/legends/Sane.png';
+import MartinelliImg from '../assets/legends/Martinelli.png';
+import NkunkuImg from '../assets/legends/Nkunku.png';
+import DepayImg from '../assets/legends/Depay.png';
+import SonImg from '../assets/legends/Son.png';
+import HallandImg from '../assets/legends/Halland.png';
 
 export const clubs = [
     {
         id : "1",
         name: "Barcelona",
         logo : fcBarcelonaLogo,
-        legend: { id: 1, name: "messi", image: messiImg }
+        legends:[
+            { id: "1-1", name: "messi", image: messiImg },
+            { id: "1-2", name: "Lamin Yamal", image: YamalImg },
+        ] 
     },
     {
         id : "2",
         name: "Inter Milan",
         logo : interMilanLogo,
-        legend: { id: 2, name: "Lautaro", image: LautaroImg }
+        legends:[
+            { id: "2-1", name: "Lautaro", image: LautaroImg },
+            { id: "2-2", name: "Lukaku", image: LukakuImg },
+        ]
     },
     {
         id: 3,
         name: "AC Milan",
         logo: acMilanLogo,
-        legend: { id: 3, name: "Ibrahimovic", image: ibraImg }
+        legends: [
+            { id: "3-1", name: "Ibrahimovic", image: ibraImg },
+            { id: "3-2", name: "Leao", image: LeaoImg },
+        ]
     },
     {
         id: 4,
         name: "Manchester United",
         logo: manUnitedLogo,
-        legend: { id: 4, name: "pogba", image: pogbaImg }
+        legends: [
+            { id: "4-1", name: "pogba", image: pogbaImg },
+            { id: "4-2", name: "Sancho", image: SanchoImg },
+        ]
     },
     {
         id: 5,
         name: "Liverpool",
         logo: liverpoolLogo,
-        legend: { id: 5, name: "van Dijk", image: VirgilImg }
+        legends: [
+            { id: "5-1", name: "van Dijk", image: VirgilImg },
+            { id: "5-2", name: "Gomez", image: GomezImg }
+        ]
     },
     {
         id: 6,
         name: "PSG",
         logo: psgLogo,
-        legend: { id: 6, name: "Neymar", image: NeymarImg }
+        legends: [
+            { id: "6-1", name: "Neymar", image: NeymarImg },
+            { id: "6-2", name: "Hakimi", image: HakimiImg }
+        ] 
     },
     {
         id: 7,
         name: "Bayern",
         logo: bayernLogo,
-        legend: { id: 7, name: "lewa", image: lewaImg }
+        legends: [
+            { id: "7-1", name: "lewa", image: lewaImg },
+            { id: "7-2", name: "Sane", image: SaneImg }
+        ] 
     },
     {
         id: 8,
         name: "Arsenal",
         logo: arsenalLogo,
-        legend: { id: 8, name: "Saka", image: SakaImg }
+        legends:[
+            { id: "8-1", name: "Saka", image: SakaImg },
+            { id: "8-2", name: "Martinelli", image: MartinelliImg }
+        ] 
     },
     {
         id: 9,
         name: "manchester city",
         logo: manCityLogo,
-        legend: { id: 9, name: "Aguero", image: agueroImg }
+        legends: [
+            { id: "9-1", name: "Aguero", image: agueroImg },
+            { id: "9-2", name: "Halland", image: HallandImg }
+        ] 
     },
     {
         id: 10,
         name: "Tottenham",
         logo: tottenhamLogo,
-        legend: { id: 10, name: "kean", image: keanImg }
+        legends: [
+            { id: "10-1", name: "Kean", image: keanImg },
+            { id: "10-2", name: "Son", image: SonImg },
+        ] 
     },
     {
         id: 11,
         name: "Atltico Madrid",
         logo: atlticomadridLogo,
-        legend: { id: 11, name: "Griezmann", image: GriezmannImg }
+        legends: [
+            { id: "11-1", name: "Griezmann", image: GriezmannImg },
+            { id: "11-2", name: "Depay", image: DepayImg },
+        ]
     },
     {
         id: 12,
         name: "Chelsea",
         logo: chelseaLogo,
-        legend: { id: 12, name: "Palmer", image: PalmerImg }
+        legends: [
+            { id: "12-1", name: "Palmer", image: PalmerImg },
+            { id: "12-2", name: "Nkunku", image: NkunkuImg },
+        ]
     },
     {
         id: 13,
         name: "Newcastle",
         logo: newcastleLogo,
-        legend: { id: 13, name: "isak", image: isakImg }
+        legends: [
+            { id: "13-1", name: "Alexander Isak", image: isakImg },
+            { id: "13-2", name: "Matt", image: MattImg }
+        ]
     },
 ]

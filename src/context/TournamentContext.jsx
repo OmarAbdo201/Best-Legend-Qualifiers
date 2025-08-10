@@ -13,7 +13,6 @@ function TournamentProvider({ children }) {
     }, [userClubs]);
 
 
-
     return (
         <TournamentContext.Provider value={{ userClubs, setUserClubs }}>
             {children}

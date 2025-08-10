@@ -27,13 +27,10 @@ body {
 
 .winner-card {
   background-color: rgba(255, 255, 255, 0.05);
-  /* لون خفيف */
   border-radius: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* ظل خفيف */
   backdrop-filter: blur(6px);
-  /* البلور */
 }
 
 .winner-card:hover {
@@ -66,39 +63,25 @@ body {
 /* Stack rounds vertically with the final at the top (apex) and the first round at the bottom (base). */
 .bracket {
   display: flex !important;
-  /* override Tailwind flex */
   flex-direction: column !important;
-  /* stack rounds vertically */
   align-items: stretch;
   gap: var(--v-gap, 2.5rem) !important;
-  /* vertical spacing between rounds */
 }
 
 /* Each round is a two-row grid: header on row 1 (full width), matches on row 2 in a single centered line */
 .round {
   display: grid !important;
-  /* override Tailwind flex on .round */
   grid-auto-flow: column;
-  /* place matches horizontally */
   grid-auto-columns: max-content;
-  /* size by content (the .match) */
   grid-template-rows: auto auto;
-  /* 1: title, 2: matches */
   justify-content: center;
-  /* center the matches row */
   align-items: center;
   column-gap: var(--h-gap, 2rem);
-  /* horizontal spacing between matches */
   row-gap: 0.5rem;
-  /* spacing between title and matches */
   margin-bottom: 0 !important;
-  /* neutralize mb-8 */
   width: fit-content;
-  /* هنا أهم تعديل عشان العرض يبقى قد المحتوى */
   margin-left: auto;
-  /* عشان نوسّطه أفقياً */
   margin-right: auto;
-  /* عشان نوسّطه أفقياً */
 }
 
 /* Title spans full width on the first row */

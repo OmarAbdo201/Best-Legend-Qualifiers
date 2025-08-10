@@ -13,19 +13,31 @@ function Tournament() {
         return arr;
     }
 
+    function getRandomLegend(club) {
+        if (!club || !club.legends || club.legends.length === 0) return null;
+        const randomIndex = Math.floor(Math.random() * club.legends.length);
+        return club.legends[randomIndex];
+    }
 
     const [rounds, setRounds] = useState(() => {
-        const shuffledClubs = shuffleArray(userClubs);
+        const shuffledClubs = shuffleArray(userClubs || []);
 
         const firstRound = [];
         for (let i = 0; i < shuffledClubs.length; i += 2) {
-            firstRound.push([shuffledClubs[i], shuffledClubs[i + 1]]);
+            const player1Club = shuffledClubs[i];
+            const player2Club = shuffledClubs[i + 1];
+
+            if (!player1Club || !player2Club) continue; // تأكد من وجود الزوج
+
+            const player1 = { ...player1Club, legend: getRandomLegend(player1Club) };
+            const player2 = { ...player2Club, legend: getRandomLegend(player2Club) };
+            firstRound.push([player1, player2]);
         }
         return [firstRound];
     });
 
     const [winnersList, setWinnersList] = useState([
-        Array(Math.ceil(userClubs.length / 2)).fill(null),
+        Array(Math.ceil((userClubs?.length || 0) / 2)).fill(null),
     ]);
 
     function handleNext() {
@@ -33,15 +45,18 @@ function Tournament() {
         const nextRound = [];
 
         for (let i = 0; i < lastWinners.length; i += 2) {
+            if (!lastWinners[i] || !lastWinners[i + 1]) continue;
             nextRound.push([lastWinners[i], lastWinners[i + 1]]);
         }
 
-        setRounds((prev) => [...prev, nextRound]);
-        setWinnersList((prev) => [...prev, Array(nextRound.length).fill(null)]);
+        if (nextRound.length > 0) {
+            setRounds((prev) => [...prev, nextRound]);
+            setWinnersList((prev) => [...prev, Array(nextRound.length).fill(null)]);
+        }
     }
 
     return (
-        <div className="bracket min-w-[400px] p-4 flex flex-row items-start justify-center gap-20 overflow-auto w-full ">
+        <div className="bracket min-w-[400px] p-4 flex flex-row items-start justify-center gap-20 overflow-auto w-full">
             {rounds.map((round, roundIndex) => (
                 <div key={roundIndex} className="round mb-8 flex flex-col items-center" data-round={roundIndex}>
                     <h2 className="text-lg text-amber-100 font-bold mb-2">Round {roundIndex + 1}</h2>
@@ -51,46 +66,50 @@ function Tournament() {
                         return (
                             <div key={matchIndex} className="match flex gap-6 items-center justify-center mb-3">
                                 {/* Player 1 */}
-                                <img
-                                    width={70}
-                                    height={70}
-                                    src={match[0]?.legend.image}
-                                    alt={match[0]?.legend.name}
-                                    className={
-                                        winner === match[0]
-                                            ? "border-4 border-blue-500 rounded-lg"
-                                            : winner === match[1]
-                                                ? "opacity-40 grayscale"
-                                                : ""
-                                    }
-                                    onClick={() => {
-                                        const updatedWinners = [...winnersList];
-                                        updatedWinners[roundIndex][matchIndex] = match[0];
-                                        setWinnersList(updatedWinners);
-                                    }}
-                                />
+                                {match[0]?.legend && (
+                                    <img
+                                        width={70}
+                                        height={70}
+                                        src={match[0].legend.image}
+                                        alt={match[0].legend.name}
+                                        className={
+                                            winner === match[0]
+                                                ? "border-4 border-blue-500 rounded-lg"
+                                                : winner === match[1]
+                                                    ? "opacity-40 grayscale"
+                                                    : ""
+                                        }
+                                        onClick={() => {
+                                            const updatedWinners = [...winnersList];
+                                            updatedWinners[roundIndex][matchIndex] = match[0];
+                                            setWinnersList(updatedWinners);
+                                        }}
+                                    />
+                                )}
 
                                 <span className="font-bold">VS</span>
 
                                 {/* Player 2 */}
-                                <img
-                                    width={70}
-                                    height={70}
-                                    src={match[1]?.legend.image}
-                                    alt={match[1]?.legend.name}
-                                    className={
-                                        winner === match[1]
-                                            ? "border-4 border-blue-500 rounded-lg"
-                                            : winner === match[0]
-                                                ? "opacity-40 grayscale"
-                                                : ""
-                                    }
-                                    onClick={() => {
-                                        const updatedWinners = [...winnersList];
-                                        updatedWinners[roundIndex][matchIndex] = match[1];
-                                        setWinnersList(updatedWinners);
-                                    }}
-                                />
+                                {match[1]?.legend && (
+                                    <img
+                                        width={70}
+                                        height={70}
+                                        src={match[1].legend.image}
+                                        alt={match[1].legend.name}
+                                        className={
+                                            winner === match[1]
+                                                ? "border-4 border-blue-500 rounded-lg"
+                                                : winner === match[0]
+                                                    ? "opacity-40 grayscale"
+                                                    : ""
+                                        }
+                                        onClick={() => {
+                                            const updatedWinners = [...winnersList];
+                                            updatedWinners[roundIndex][matchIndex] = match[1];
+                                            setWinnersList(updatedWinners);
+                                        }}
+                                    />
+                                )}
                             </div>
                         );
                     })}
@@ -124,9 +143,6 @@ function Tournament() {
                             </p>
                         </div>
                     </div>
-
-
-
                 )}
         </div>
     );
