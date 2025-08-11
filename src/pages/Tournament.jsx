@@ -1,8 +1,16 @@
 import { useState, useContext } from "react";
 import { TournamentContext } from "../context/TournamentContext";
+import footballwhistle from '../assets/audio/sofara.mp3';
+import Tada from '../assets/audio/Tada.m4a';
 
 function Tournament() {
+
     const { userClubs } = useContext(TournamentContext);
+
+    const playAudio = (filename) => {
+        const audio = new Audio(filename);
+        audio.play().catch(err => console.error("Audio error:", err));
+    };
 
     function shuffleArray(array) {
         const arr = [...array];
@@ -53,6 +61,7 @@ function Tournament() {
             setRounds((prev) => [...prev, nextRound]);
             setWinnersList((prev) => [...prev, Array(nextRound.length).fill(null)]);
         }
+        playAudio(footballwhistle);
     }
 
     return (
@@ -134,6 +143,7 @@ function Tournament() {
                         <div className="winner-card p-4 text-center">
                             <h3 className="text-xl text-yellow-500 font-bold mb-2">🏆 Super Legend</h3>
                             <img
+                                onClick={() => playAudio(Tada)}
                                 src={winnersList[winnersList.length - 1][0].legend.image}
                                 alt="winner"
                                 className="w-28 h-28 object-contain mx-auto mt-2"
@@ -143,7 +153,8 @@ function Tournament() {
                             </p>
                         </div>
                     </div>
-                )}
+                )
+            }
         </div>
     );
 }
