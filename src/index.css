@@ -178,46 +178,36 @@ body {
 
 @media (max-width: 640px) {
 
-  /* خلي كل الراوندات جنب بعض */
-  .bracket {
-    flex-direction: row !important;
-    align-items: flex-start;
-    /* تبدأ من فوق */
-    overflow-x: auto;
-    /* عشان لو كتير تعمل Scroll أفقياً */
-    gap: 10rem;
-  }
-
-  /* كل راوند يحتفظ بالعرض المناسب */
+  /* التعديلات الخاصة بالموبايل هنا */
   .round {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    min-width: 150px;
-    /* عرض ثابت عشان التماثل */
+    margin-bottom: 0 !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* ستايل الماتشات جوه الراوند */
+
   .round .match {
+    grid-row: 2;
     margin: 0 !important;
     padding: 0.5rem;
     background-color: rgba(255, 255, 255, 0.05);
+    /* لون خفيف */
     border-radius: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     height: auto;
   }
 
-  /* فرق بين كل ماتش */
+  /* فرق واضح بين كل ماتش والتاني */
   .round .match:not(:last-child) {
-    margin-bottom: 1rem;
+    margin-right: 1.5rem;
     /* مسافة بين الماتشات */
-    margin-right: 0;
-    /* مفيش مسافة أفقية */
   }
 
-  /* ألوان مختلفة لكل ماتش */
+  /* ممكن كمان تعمل تظليل مختلف لكل ماتش فردي وزوجي */
   .round .match:nth-child(odd) {
     background-color: rgba(255, 255, 255, 0.08);
   }
@@ -226,18 +216,4 @@ body {
     background-color: rgba(0, 0, 0, 0.08);
   }
 
-  .nextBtn {
-    position: fixed;
-    bottom: 50%;
-    right: 50%;
-    z-index: 1000;
-    background-color: #2b85d4;
-    font-weight: bold;
-    /* Blue-600 */
-    color: rgb(238, 229, 229);
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
 }
